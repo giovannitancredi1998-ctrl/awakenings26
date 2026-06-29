@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awakenings 2026 — Giovanni · Lucie · Audrey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #090909;
+  --deep: #0e0e0e;
+  --surface: #141414;
+  --surface2: #1c1c1c;
+  --border: #2a2a2a;
+  --border2: #383838;
+  --yellow: #e8ff1a;
+  --yellow-dim: #b8cc14;
+  --text: #f0f0f0;
+  --text-sec: #888;
+  --text-muted: #555;
+  --green: #39ff7a;
+  --blue: #3a8fff;
+  --mono: 'Space Mono', monospace;
+  --sans: 'Inter', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px);
+  pointer-events: none;
+  z-index: 1000;
+}
+/* HEADER */
+.site-header {
+  position: relative;
+  padding: 3rem 1.5rem 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(232,255,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.beat-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 700px;
+  border: 1px solid rgba(232,255,26,0.035);
+  border-radius: 50%;
+  animation: beatExpand 0.46s ease-out infinite;
+  pointer-events: none;
+}
+.beat-ring:nth-child(2) { animation-delay: 0.23s; }
+@keyframes beatExpand {
+  0% { transform: translate(-50%,-50%) scale(0.25); opacity: 0.8; }
+  100% { transform: translate(-50%,-50%) scale(1); opacity: 0; }
+}
+.logo {
+  font-family: var(--mono);
+  font-size: clamp(2rem, 10vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  line-height: 1;
+  position: relative;
+}
+.logo-sub {
+  font-family: var(--mono);
+  font-size: clamp(0.55rem, 2vw, 0.72rem);
+  letter-spacing: 0.28em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+.crew-names {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.crew-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border: 1px solid var(--border2);
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.crew-pill + .crew-pill { margin-left: -1px; }
+.crew-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.dot-gio { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); }
+.dot-lucie { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.dot-audrey { background: var(--blue); box-shadow: 0 0 6px var(--blue); }
+/* NAV */
+nav {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+  padding: 0 0.5rem;
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--text); }
+.nav-btn.active { color: var(--yellow); border-bottom-color: var(--yellow); }
+/* SECTIONS */
+.section { display: none; padding: 2rem 1.25rem; max-width: 740px; margin: 0 auto; }
+.section.active { display: block; }
+.section-title {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+/* COUNTDOWN */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+.cd-unit {
+  background: var(--surface);
+  padding: clamp(1rem, 4vw, 1.75rem) 0.5rem clamp(0.9rem, 3vw, 1.5rem);
+  text-align: center;
+}
+.cd-num {
+  font-family: var(--mono);
+  font-size: clamp(1.8rem, 8vw, 3.5rem);
+  font-weight: 700;
+  color: var(--yellow);
+  line-height: 1;
+  display: block;
+}
+.cd-label {
+  font-family: var(--mono);
+  font-size: clamp(0.5rem, 1.5vw, 0.6rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  display: block;
+}
+.dates-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 440px) { .dates-grid { grid-template-columns: 1fr; } }
+.date-cell {
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+}
+.date-label {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.date-value { font-family: var(--mono); font-size: 0.88rem; color: var(--text); }
+.date-sub { font-size: 0.78rem; color: var(--text-sec); margin-top: 2px; }
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--yellow);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.info-card-label {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--yellow-dim);
+  margin-bottom: 5px;
+}
+.info-card-text { font-size: 0.83rem; color: var(--text-sec); line-height: 1.65; }
+/* SCHEDULE */
+.timeline { position: relative; padding-left: 2.25rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.8rem; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 1.5rem; }
+.tl-dot {
+  position: absolute;
+  left: -2.25rem; top: 5px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--yellow);
+  background: var(--black);
+}
+.tl-item.highlight .tl-dot {
+  background: var(--yellow);
+  box-shadow: 0 0 12px var(--yellow);
+  animation: glowPulse 2s ease infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 6px var(--yellow); }
+  50% { box-shadow: 0 0 18px var(--yellow), 0 0 32px rgba(232,255,26,0.25); }
+}
+.tl-time {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--yellow-dim);
+  margin-bottom: 3px;
+}
+.tl-title { font-size: 0.93rem; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.tl-desc { font-size: 0.8rem; color: var(--text-sec); }
+.tl-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.badge-warn { background: rgba(255,180,0,0.12); color: #ffb400; border: 1px solid rgba(255,180,0,0.25); }
+.badge-ok { background: rgba(57,255,122,0.08); color: var(--green); border: 1px solid rgba(57,255,122,0.18); }
+/* PACKING */
+.pack-progress {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.pack-progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.pack-progress-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-sec);
+}
+.pack-progress-pct { font-family: var(--mono); font-size: 0.65rem; color: var(--yellow); }
+.pack-bar-bg { height: 3px; background: var(--border); overflow: hidden; }
+.pack-bar-fill {
+  height: 3px;
+  background: var(--yellow);
+  transition: width 0.4s;
+  box-shadow: 0 0 8px rgba(232,255,26,0.4);
+}
+.person-filter {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.pf-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pf-btn:hover { border-color: var(--border2); color: var(--text); }
+.pf-btn.active { color: var(--black); }
+.pf-btn.pf-all.active { background: var(--text-sec); border-color: var(--text-sec); }
+.pf-btn.pf-gio.active { background: var(--yellow); border-color: var(--yellow); }
+.pf-btn.pf-lucie.active { background: var(--green); border-color: var(--green); }
+.pf-btn.pf-audrey.active { background: var(--blue); border-color: var(--blue); }
+.pf-reset { margin-left: auto; }
+.pack-cat { margin-bottom: 1.1rem; }
+.cat-hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3px;
+  user-select: none;
+}
+.cat-lbl {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-sec);
+  flex: 1;
+}
+.cat-cnt { font-family: var(--mono); font-size: 0.6rem; color: var(--text-muted); }
+.cat-chev { font-size: 0.6rem; color: var(--text-muted); transition: transform 0.2s; }
+.cat-hdr.collapsed .cat-chev { transform: rotate(-90deg); }
+.pack-items { display: flex; flex-direction: column; }
+.pack-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.pack-item:hover { background: var(--surface2); }
+.pack-item.hidden { display: none; }
+.pack-cb {
+  width: 16px; height: 16px;
+  border: 1px solid var(--border2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--black);
+  transition: all 0.18s;
+}
+.pack-item[data-owner="giovanni"].checked .pack-cb { background: var(--yellow); border-color: var(--yellow); }
+.pack-item[data-owner="lucie"].checked .pack-cb { background: var(--green); border-color: var(--green); }
+.pack-item[data-owner="audrey"].checked .pack-cb { background: var(--blue); border-color: var(--blue); }
+.pack-lbl { flex: 1; font-size: 0.84rem; color: var(--text); transition: color 0.2s; }
+.pack-item.checked .pack-lbl { color: var(--text-muted); text-decoration: line-through; text-decoration-color: var(--text-muted); }
+.pack-note { font-size: 0.68rem; color: var(--text-muted); display: block; margin-top: 1px; text-decoration: none !important; }
+.pack-item.checked .pack-note { display: none; }
+.pack-star { font-size: 9px; color: var(--yellow); flex-shrink: 0; }
+.owner-tag {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+.tag-gio { background: rgba(232,255,26,0.1); color: var(--yellow); }
+.tag-lucie { background: rgba(57,255,122,0.08); color: var(--green); }
+.tag-audrey { background: rgba(58,143,255,0.08); color: var(--blue); }
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  padding: 1rem;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  max-width: 320px;
+  width: 100%;
+  padding: 1.75rem;
+  transform: translateY(12px);
+  transition: transform 0.2s;
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.modal-item { font-size: 1rem; font-weight: 500; color: var(--text); margin-bottom: 1.25rem; }
+.modal-q { font-size: 0.82rem; color: var(--text-sec); margin-bottom: 1rem; }
+.modal-persons { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.25rem; }
+.person-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  background: var(--black);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
+}
+.person-btn.pb-gio:hover { border-color: var(--yellow); color: var(--yellow); background: rgba(232,255,26,0.04); }
+.person-btn.pb-lucie:hover { border-color: var(--green); color: var(--green); background: rgba(57,255,122,0.04); }
+.person-btn.pb-audrey:hover { border-color: var(--blue); color: var(--blue); background: rgba(58,143,255,0.04); }
+.modal-cancel {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.modal-cancel:hover { color: var(--text); }
+/* EXPENSES */
+.exp-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+.exp-person-card {
+  background: var(--surface);
+  padding: 1rem 0.75rem;
+  text-align: center;
+}
+.exp-person-name {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.exp-person-total {
+  font-family: var(--mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.exp-person-balance {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  margin-top: 4px;
+}
+.bal-pos { color: var(--green); }
+.bal-neg { color: #ff5555; }
+.bal-zero { color: var(--text-muted); }
+.exp-add-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.exp-add-title {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.exp-form-row {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.exp-paid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+.exp-person-sel {
+  padding: 8px 10px;
+  background: var(--black);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.exp-person-sel.sel-gio.active { border-color: var(--yellow); color: var(--yellow); background: rgba(232,255,26,0.06); }
+.exp-person-sel.sel-lucie.active { border-color: var(--green); color: var(--green); background: rgba(57,255,122,0.05); }
+.exp-person-sel.sel-audrey.active { border-color: var(--blue); color: var(--blue); background: rgba(58,143,255,0.05); }
+.split-row {
+  margin-bottom: 0.75rem;
+}
+.split-label {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.split-options {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.split-opt {
+  padding: 5px 10px;
+  background: var(--black);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.split-opt.active { border-color: var(--yellow); color: var(--yellow); background: rgba(232,255,26,0.06); }
+.exp-log {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.exp-log-title {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.exp-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: background 0.12s;
+}
+.exp-entry:hover { background: var(--surface2); }
+.exp-entry-desc {
+  flex: 1;
+  font-size: 0.83rem;
+  color: var(--text);
+}
+.exp-entry-meta {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.exp-entry-amt {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.exp-del {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.exp-del:hover { color: #ff5555; }
+.settle-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+.settle-title {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+}
+.settle-row {
+  font-size: 0.84rem;
+  color: var(--text-sec);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.settle-amt { font-family: var(--mono); color: var(--text); font-weight: 700; }
+.exp-empty {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  letter-spacing: 0.1em;
+}
+
+/* INFO */
+.info-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+.info-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.info-block-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+.info-block-icon {
+  font-size: 1rem;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.info-block-title {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  flex: 1;
+}
+.info-block-chev { font-size: 0.6rem; color: var(--text-muted); transition: transform 0.2s; }
+.info-block-header.collapsed .info-block-chev { transform: rotate(-90deg); }
+.info-block-body { padding: 1rem 1.25rem; }
+.info-row {
+  display: flex;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.83rem;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row-icon { font-size: 0.85rem; flex-shrink: 0; width: 20px; text-align: center; margin-top: 2px; }
+.info-row-content { flex: 1; }
+.info-row-label {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.info-row-val { color: var(--text-sec); line-height: 1.55; }
+.info-row-val strong { color: var(--text); font-weight: 500; }
+.info-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  margin: 2px 3px 0 0;
+}
+.tag-red { background: rgba(255,60,60,0.1); color: #ff5555; border: 1px solid rgba(255,60,60,0.2); }
+.tag-green { background: rgba(57,255,122,0.08); color: var(--green); border: 1px solid rgba(57,255,122,0.18); }
+.tag-yellow { background: rgba(232,255,26,0.08); color: var(--yellow); border: 1px solid rgba(232,255,26,0.18); }
+.info-link {
+  color: var(--yellow);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+.info-link:hover { text-decoration: underline; }
+
+/* CAMP GPS */
+.gps-main {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.gps-coords-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+.gps-coord-cell {
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+.gps-coord-label {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.gps-coord-val {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  color: var(--yellow);
+  font-weight: 700;
+}
+.gps-coord-val.unset { color: var(--text-muted); font-size: 0.8rem; }
+.gps-status {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.gps-status.set { background: rgba(57,255,122,0.08); border: 1px solid rgba(57,255,122,0.2); color: var(--green); }
+.gps-status.unset { background: rgba(232,255,26,0.05); border: 1px solid rgba(232,255,26,0.15); color: var(--yellow-dim); }
+.gps-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.gps-dot.set { background: var(--green); animation: glowPulse 2s ease infinite; }
+.gps-dot.unset { background: var(--yellow-dim); }
+.gps-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.gps-btn-primary {
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  flex: 1;
+}
+.gps-btn-primary:hover { background: #fff; }
+.gps-btn-primary:active { transform: scale(0.97); }
+.gps-btn-secondary {
+  background: var(--surface);
+  color: var(--text-sec);
+  border: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.gps-btn-secondary:hover { border-color: var(--border2); color: var(--text); }
+.gps-manual-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+.gps-map-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.85rem;
+  transition: border-color 0.2s;
+  margin-bottom: 0.75rem;
+}
+.gps-map-link:hover { border-color: var(--border2); }
+.gps-map-icon { font-size: 1.2rem; flex-shrink: 0; }
+.gps-map-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
+.gps-map-desc { font-size: 0.82rem; color: var(--text-sec); }
+.gps-note-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.gps-note-title {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+textarea.field-input {
+  resize: vertical;
+  min-height: 70px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.gps-info { font-size: 0.8rem; color: var(--text-sec); line-height: 1.65; margin-top: 0.75rem; }
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="beat-ring"></div>
+  <div class="beat-ring"></div>
+  <div class="logo">Awakenings</div>
+  <div class="logo-sub">Festival 2026 &nbsp;·&nbsp; Hilvarenbeek, Netherlands</div>
+  <div class="crew-names">
+    <div class="crew-pill"><div class="crew-dot dot-gio"></div>Giovanni</div>
+    <div class="crew-pill"><div class="crew-dot dot-lucie"></div>Lucie</div>
+    <div class="crew-pill"><div class="crew-dot dot-audrey"></div>Audrey</div>
+  </div>
+</header>
+
+<nav>
+  <button class="nav-btn active" onclick="showSection('countdown',this)">Countdown</button>
+  <button class="nav-btn" onclick="showSection('schedule',this)">Schedule</button>
+  <button class="nav-btn" onclick="showSection('packing',this)">Packing</button>
+  <button class="nav-btn" onclick="showSection('expenses',this)">Expenses</button>
+  <button class="nav-btn" onclick="showSection('camp',this)">Camp Pin</button>
+  <button class="nav-btn" onclick="showSection('info',this)">Info</button>
+</nav>
+
+<!-- COUNTDOWN -->
+<section id="sec-countdown" class="section active">
+  <div class="section-title">Time until the festival</div>
+  <div class="countdown-grid">
+    <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Mins</span></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Secs</span></div>
+  </div>
+
+  <div class="dates-grid">
+    <div class="date-cell">
+      <div class="date-label">Camping opens</div>
+      <div class="date-value">Fri 10 Jul 2026</div>
+      <div class="date-sub">12:00 — arrive &amp; set up</div>
+    </div>
+    <div class="date-cell">
+      <div class="date-label">Festival gates open</div>
+      <div class="date-value">Daily 15:00</div>
+      <div class="date-sub">Music 15:00 – 23:00 each day</div>
+    </div>
+    <div class="date-cell">
+      <div class="date-label">Last day music ends</div>
+      <div class="date-value">Sun 12 Jul — 23:00</div>
+      <div class="date-sub">Closing sets, usually special</div>
+    </div>
+    <div class="date-cell">
+      <div class="date-label">Camping closes</div>
+      <div class="date-value">Mon 13 Jul — 10:00</div>
+      <div class="date-sub">Vacate campsite by this time</div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-label">Payments on site</div>
+    <div class="info-card-text">Token system only inside the festival — top up by card or cash at stations across the grounds. Bring €50–100 cash per person as backup. Tokens are refundable at exit.</div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-label">Getting there</div>
+    <div class="info-card-text">Nearest hub: Tilburg Central Station (~20 min shuttle). Amsterdam Sloterdijk shuttles also run. Check the official Awakenings site for times closer to the date.</div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-label">Meetup plan</div>
+    <div class="info-card-text">Cell signal will be terrible with 80,000 people on one tower. Agree on a physical meetup spot inside the festival before going in — pick a stage name + area, not just "near the entrance".</div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="sec-schedule" class="section">
+  <div class="section-title">Full trip schedule</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Before departure</div>
+      <div class="tl-title">Pre-trip checklist</div>
+      <div class="tl-desc">Confirm all tickets (festival + flights). Download offline maps for Hilvarenbeek area. Charge all powerbanks.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Thu 9 Jul — Travel day</div>
+      <div class="tl-title">Fly to Netherlands</div>
+      <div class="tl-desc">See your flight details in the Flights tab. Get to Tilburg or Amsterdam and sleep early — 3 days ahead.</div>
+    </div>
+
+    <div class="tl-item highlight">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Fri 10 Jul — 12:00</div>
+      <div class="tl-title">Camping opens <span class="tl-badge badge-ok">Day 1</span></div>
+      <div class="tl-desc">Arrive early, pick a good spot, set up the tent. Plant your festival flag — you will need it to find home at 1am.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Fri 10 Jul — 15:00</div>
+      <div class="tl-title">Festival gates open</div>
+      <div class="tl-desc">Arrive in the first hour to catch opening sets at Area V — often the sharpest programming of the whole weekend. Adam Beyer, Amelie Lens, I Hate Models are confirmed.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Fri 10 Jul — 23:00</div>
+      <div class="tl-title">Day 1 closes</div>
+      <div class="tl-desc">Back to camp. Eat something real, drink water, electrolyte up. Protect your feet for two more days.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Sat 11 Jul — 15:00</div>
+      <div class="tl-title">Day 2 — peak day <span class="tl-badge badge-ok">Day 2</span></div>
+      <div class="tl-desc">Biggest crowd. Agree on a meetup point before going in. Phone signal may be unreliable — plan for it.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Sun 12 Jul — 15:00</div>
+      <div class="tl-title">Day 3 — closing day <span class="tl-badge badge-ok">Day 3</span></div>
+      <div class="tl-desc">Joris Voorn and Kevin de Vries confirmed for closing. Last day — make it count. Leave before the final song if you want to beat the exit queue.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Sun 12 Jul — 23:00</div>
+      <div class="tl-title">Festival ends</div>
+      <div class="tl-desc">Return to camp. Begin packing what you can tonight — Monday morning is brutal if you leave it all to then.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Mon 13 Jul — by 10:00</div>
+      <div class="tl-title">Vacate campsite <span class="tl-badge badge-warn">Deadline</span></div>
+      <div class="tl-desc">Camping closes at 10:00. Strike the tent, pack everything, leave no trace. Shuttle back to Tilburg or arrange pickup.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">Mon 13 Jul — Afternoon</div>
+      <div class="tl-title">Return flights</div>
+      <div class="tl-desc">Check departure details in the Flights tab. Leave buffer time — post-festival traffic from site can be heavy.</div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- PACKING -->
+<section id="sec-packing" class="section">
+  <div class="section-title">Packing list</div>
+
+  <div class="pack-progress">
+    <div class="pack-progress-header">
+      <span class="pack-progress-label">Overall progress</span>
+      <span class="pack-progress-pct" id="pack-pct">0%</span>
+    </div>
+    <div class="pack-bar-bg"><div class="pack-bar-fill" id="pack-bar" style="width:0%"></div></div>
+  </div>
+
+  <div class="person-filter">
+    <button class="pf-btn pf-all active" onclick="filterPerson('all',this)">All</button>
+    <button class="pf-btn pf-gio" onclick="filterPerson('giovanni',this)"><div class="crew-dot dot-gio" style="width:6px;height:6px"></div>Giovanni</button>
+    <button class="pf-btn pf-lucie" onclick="filterPerson('lucie',this)"><div class="crew-dot dot-lucie" style="width:6px;height:6px"></div>Lucie</button>
+    <button class="pf-btn pf-audrey" onclick="filterPerson('audrey',this)"><div class="crew-dot dot-audrey" style="width:6px;height:6px"></div>Audrey</button>
+    <button class="pf-btn pf-all pf-reset" onclick="resetPacking()">Reset all</button>
+  </div>
+
+  <div id="pack-list"></div>
+</section>
+
+
+<!-- EXPENSES -->
+<section id="sec-expenses" class="section">
+  <div class="section-title">Shared expenses</div>
+
+  <div class="exp-summary" id="exp-summary">
+    <div class="exp-person-card">
+      <div class="exp-person-name"><div class="crew-dot dot-gio"></div>Giovanni</div>
+      <div class="exp-person-total" id="exp-total-giovanni" style="color:var(--yellow)">€0</div>
+      <div class="exp-person-balance" id="exp-bal-giovanni">—</div>
+    </div>
+    <div class="exp-person-card">
+      <div class="exp-person-name"><div class="crew-dot dot-lucie"></div>Lucie</div>
+      <div class="exp-person-total" id="exp-total-lucie" style="color:var(--green)">€0</div>
+      <div class="exp-person-balance" id="exp-bal-lucie">—</div>
+    </div>
+    <div class="exp-person-card">
+      <div class="exp-person-name"><div class="crew-dot dot-audrey"></div>Audrey</div>
+      <div class="exp-person-total" id="exp-total-audrey" style="color:var(--blue)">€0</div>
+      <div class="exp-person-balance" id="exp-bal-audrey">—</div>
+    </div>
+  </div>
+
+  <div class="exp-add-form">
+    <div class="exp-add-title">Log an expense</div>
+    <div class="exp-form-row">
+      <div><div class="field-label">What was it for?</div><input class="field-input" id="exp-desc" placeholder="Shuttle tickets, tokens, food..."></div>
+      <div><div class="field-label">Amount (€)</div><input class="field-input" id="exp-amt" type="number" placeholder="0" min="0" step="0.50"></div>
+    </div>
+    <div class="field-label" style="margin-bottom:6px">Who paid?</div>
+    <div class="exp-paid-row" style="margin-bottom:0.75rem">
+      <div class="exp-person-sel sel-gio" id="psel-giovanni" onclick="selectPayer('giovanni')"><div class="crew-dot dot-gio" style="width:6px;height:6px"></div>Giovanni</div>
+      <div class="exp-person-sel sel-lucie" id="psel-lucie" onclick="selectPayer('lucie')"><div class="crew-dot dot-lucie" style="width:6px;height:6px"></div>Lucie</div>
+      <div class="exp-person-sel sel-audrey" id="psel-audrey" onclick="selectPayer('audrey')"><div class="crew-dot dot-audrey" style="width:6px;height:6px"></div>Audrey</div>
+    </div>
+    <div class="split-row">
+      <div class="split-label">Split between</div>
+      <div class="split-options">
+        <div class="split-opt active" id="split-all3" onclick="selectSplit('all3')">All 3 equally</div>
+        <div class="split-opt" id="split-gio-lucie" onclick="selectSplit('gio-lucie')">Gio + Lucie</div>
+        <div class="split-opt" id="split-gio-audrey" onclick="selectSplit('gio-audrey')">Gio + Audrey</div>
+        <div class="split-opt" id="split-lucie-audrey" onclick="selectSplit('lucie-audrey')">Lucie + Audrey</div>
+        <div class="split-opt" id="split-solo" onclick="selectSplit('solo')">Payer only</div>
+      </div>
+    </div>
+    <button class="save-btn" onclick="addExpense()">Add expense</button>
+  </div>
+
+  <div class="exp-log-title">Expense log</div>
+  <div id="exp-log-list"></div>
+  <div class="settle-block" id="settle-block" style="display:none">
+    <div class="settle-title">How to settle up</div>
+    <div id="settle-list"></div>
+  </div>
+</section>
+
+<!-- CAMP PIN -->
+<section id="sec-camp" class="section">
+  <div class="section-title">Camp GPS pin</div>
+
+  <div class="gps-status unset" id="gps-status">
+    <div class="gps-dot unset" id="gps-dot"></div>
+    <span id="gps-status-text">No pin saved yet</span>
+  </div>
+
+  <div class="gps-coords-display">
+    <div class="gps-coord-cell">
+      <div class="gps-coord-label">Latitude</div>
+      <div class="gps-coord-val unset" id="gps-lat-display">—</div>
+    </div>
+    <div class="gps-coord-cell">
+      <div class="gps-coord-label">Longitude</div>
+      <div class="gps-coord-val unset" id="gps-lng-display">—</div>
+    </div>
+  </div>
+
+  <div class="gps-btns">
+    <button class="gps-btn-primary" onclick="getGPS()">📍 Save my current location</button>
+    <button class="gps-btn-secondary" onclick="toggleManual()">Enter manually</button>
+    <button class="gps-btn-secondary" onclick="clearGPS()" id="gps-clear-btn" style="display:none">Clear pin</button>
+  </div>
+
+  <div id="gps-manual-form" style="display:none; margin-bottom:1.25rem;">
+    <div class="gps-manual-row">
+      <div><div class="field-label">Latitude</div><input class="field-input" id="gps-lat-input" placeholder="51.5074" type="number" step="any"></div>
+      <div><div class="field-label">Longitude</div><input class="field-input" id="gps-lng-input" placeholder="5.1234" type="number" step="any"></div>
+    </div>
+    <button class="save-btn" onclick="saveManualGPS()">Save coordinates</button>
+  </div>
+
+  <div id="gps-map-links" style="display:none">
+    <a id="gps-google-link" href="#" class="gps-map-link" target="_blank">
+      <div class="gps-map-icon">🗺</div>
+      <div>
+        <div class="gps-map-label">Open in Google Maps</div>
+        <div class="gps-map-desc">Navigate back to camp from anywhere on site</div>
+      </div>
+    </a>
+    <a id="gps-apple-link" href="#" class="gps-map-link" target="_blank">
+      <div class="gps-map-icon">🍎</div>
+      <div>
+        <div class="gps-map-label">Open in Apple Maps</div>
+        <div class="gps-map-desc">For iPhone users</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="gps-note-box">
+    <div class="gps-note-title">Camp notes</div>
+    <textarea class="field-input" id="gps-notes" placeholder="Row D, near the big tree, blue flag on tent, 3rd from the left path..." rows="3" oninput="saveCampNotes()"></textarea>
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-label">How to use this</div>
+    <div class="info-card-text">Once you've set up your tent on Friday, open this page and tap "Save my current location". The GPS coordinates are saved to your phone. When you're lost later, come back here and tap the map link — it opens navigation directly to your tent. Share the coordinates with Lucie and Audrey too.</div>
+  </div>
+</section>
+
+
+<!-- INFO -->
+<section id="sec-info" class="section">
+  <div class="section-title">Festival info</div>
+  <div class="info-grid">
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">🎟</div>
+        <div class="info-block-title">Tickets & entry</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">📋</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Personalise your ticket</div>
+            <div class="info-row-val">Mandatory. Tickets are sent to the main buyer on <strong>Thu 8 Jul</strong>. Check your inbox for "Bleep" — also check spam.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">📱</div>
+          <div class="info-row-content">
+            <div class="info-row-label">At the gate</div>
+            <div class="info-row-val">Turn screen brightness up. Download tickets in advance. <strong>No printing needed.</strong> No re-entry once you leave the festival.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🪪</div>
+          <div class="info-row-content">
+            <div class="info-row-label">ID required</div>
+            <div class="info-row-val">18+ event. Passport or ID card mandatory at entry — no exceptions. Bring the physical document.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🚪</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Entrances</div>
+            <div class="info-row-val">
+              <strong>Fri:</strong> Entrance South only (Westrik 2, Hilvarenbeek)<br>
+              <strong>Sat + Sun:</strong> Entrance North or South<br>
+              Check which entrance is printed on your ticket.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">🚌</div>
+        <div class="info-block-title">Getting there</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">🚆</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Recommended route</div>
+            <div class="info-row-val">Train to <strong>Tilburg Central Station</strong>, then official shuttle bus (~20 min). Easiest option for most visitors.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🚌</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Shuttle from Tilburg — prices</div>
+            <div class="info-row-val">
+              Grand Camping / Festival South: <strong>€9.25 pre-sale</strong> / €12.50 on the day<br>
+              Comfort Camping: <strong>€14.95 pre-sale</strong> / €17.50 on the day<br>
+              Buy in advance — saves money and guarantees a seat.
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">⏰</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Shuttle times from Tilburg</div>
+            <div class="info-row-val">
+              Fri: 11:00 – 02:30 (Entrance South)<br>
+              Sat + Sun: 12:00 – 02:30 (Entrance North)<br>
+              Mon: 08:00 – 12:30 (back to Tilburg)
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">✈️</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Nearest airports</div>
+            <div class="info-row-val">
+              <strong>Eindhoven (EIN)</strong> — 40 km, ~30 min drive. Closest.<br>
+              <strong>Amsterdam Schiphol (AMS)</strong> — 120 km, ~1.5h<br>
+              <strong>Brussels (BRU)</strong> — 130 km, ~1.5h
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">⚠️</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Leaving — allow extra time</div>
+            <div class="info-row-val">80,000 people leave at once. Shuttles have queues. If you have a train to catch, leave the festival <strong>before the last set ends.</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">💶</div>
+        <div class="info-block-title">Tokens & payment</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">🪙</div>
+          <div class="info-row-content">
+            <div class="info-row-label">How it works</div>
+            <div class="info-row-val">Everything inside the festival uses tokens. Top up by <strong>cash or card</strong> at token stations across the grounds. Unused tokens are refundable at exit.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">♻️</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Recycle token system</div>
+            <div class="info-row-val">You get <strong>1 free recycle token</strong> at the entrance. Every drink order: hand in your recycle token or an empty cup/can. Lose it and you pay an extra token. Return your empties at the bar or recycle points to get a token back.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">💧</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Free water</div>
+            <div class="info-row-val">Free water taps at all toilet facilities and several water points near the stages. Bring your own bottle and refill for free all day.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🥗</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Food</div>
+            <div class="info-row-val">100% vegetarian menu at all stalls. Vegan and gluten-free options available. No outside food allowed inside the festival grounds (camping only).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">🏕</div>
+        <div class="info-block-title">Camping rules</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">🍺</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Drinks you can bring to camp</div>
+            <div class="info-row-val">Max <strong>4.5L per person</strong>, of which max 1L can be alcohol. No glass. No pre-mixed drinks above 15% ABV. All must be in original sealed packaging. <strong>No drinks from camp into the festival.</strong></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🍜</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Food at camp</div>
+            <div class="info-row-val">You can bring your own food for personal consumption. <strong>No open fires, BBQs, or camping stoves</strong> (gas or otherwise). No candles.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🔊</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Speakers at camp</div>
+            <div class="info-row-val">Small battery speakers allowed, max <strong>80 dB, max 30 cm size.</strong> Respect your neighbours.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🏊</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Lake swimming</div>
+            <div class="info-row-val">Allowed only at designated areas and during designated hours. Not anywhere, not anytime.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🧹</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Leave no trace</div>
+            <div class="info-row-val">Strict policy across the entire campsite. Pack out everything. Camping closes <strong>Mon 13 Jul at 10:00</strong> — leave before then.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">🔒</div>
+        <div class="info-block-title">Lockers</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">📦</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Sizes</div>
+            <div class="info-row-val">
+              Standard: 22 × 25 × 50 cm (1–2 people)<br>
+              Large: 33 × 25 × 50 cm (2–3 people)
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🛒</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Buy in advance</div>
+            <div class="info-row-val">Pre-sale deadline: <strong>Tue 7 Jul, 09:00.</strong> Locker number + PIN sent on <strong>Wed 8 Jul.</strong> Campsite lockers are pre-sale only — not available on location.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">📌</div>
+          <div class="info-row-content">
+            <div class="info-row-label">PIN code</div>
+            <div class="info-row-val">No deposit. Keep your PIN safe — losing it means anyone can access your locker. Weekend locker keeps the same code all 3 days.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">🚫</div>
+        <div class="info-block-title">What's not allowed</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">💊</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Zero tolerance on drugs</div>
+            <div class="info-row-val">All drugs forbidden — hard and soft. Pills, powders, liquids, mushrooms, weed/hash, N2O (laughing gas). Caught = removed from festival + possible police handover. This is strictly enforced, not just written policy.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">📷</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Cameras</div>
+            <div class="info-row-val">Phone cameras and compact cameras: <strong class="tag-green">OK</strong><br>Professional cameras with detachable/interchangeable lenses: <span class="info-tag tag-red">Forbidden</span><br>Drones: <span class="info-tag tag-red">Forbidden</span></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🚬</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Smoking & vaping</div>
+            <div class="info-row-val">Not sold on site. Forbidden inside venues and tents (Dutch law). Smoke only outside. Weekend allowance: max <strong>8 packs</strong> per person. No cigarettes sold anywhere on site — bring your own.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">⛺</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Party tents</div>
+            <div class="info-row-val"><span class="info-tag tag-red">Not allowed</span> Actively enforced at check-in. Will be confiscated. Only approved tents from the rental store or your own sleeping tent.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🚫</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Also forbidden</div>
+            <div class="info-row-val">Glass packaging · Fireworks · Weapons · Pets · Climbing trees or scaffolding · Crowd surfing · Open fires · Gas stoves · Fridges · Beer kegs · Candles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">🆘</div>
+        <div class="info-block-title">Safety & first aid</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">🏥</div>
+          <div class="info-row-content">
+            <div class="info-row-label">First aid + social safety</div>
+            <div class="info-row-val">First aid station and Social Safety Hub are <strong>next to each other</strong> near the entrance. Social Safety Team walks the grounds — look for the jackets. You can also start a WhatsApp conversation with on-site staff by scanning QR codes at the entrance or toilets.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🤫</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Quiet space</div>
+            <div class="info-row-val">Low-stimulus area with seats and noise-cancelling headphones near the first aid — useful if you get overwhelmed.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">👜</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Pickpockets</div>
+            <div class="info-row-val">Busy crowd = pickpocket risk. Keep your phone in a front pocket or zipped bag. Leave expensive jewellery at home.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🔍</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Lost & found</div>
+            <div class="info-row-val"><strong>iLost tent</strong> near the first aid at the festival. After the festival, check <a href="https://www.ilost.nl" class="info-link" target="_blank">ilost.nl</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">💊</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Prescription medication</div>
+            <div class="info-row-val">Allowed with an official doctor's note. First aid team checks both document and medication at entrance. Pre-contact: <a href="mailto:accessibility@awakenings.nl" class="info-link">accessibility@awakenings.nl</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">🔋</div>
+        <div class="info-block-title">Charging & lockers on site</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">⚡</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Charging stations</div>
+            <div class="info-row-val">Charging stations at the camp store (reception) and at the locker desk on the festival site. You can also rent powerbanks on site — €30 deposit (€5/hour, refund on return).</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">📶</div>
+          <div class="info-row-content">
+            <div class="info-row-label">WiFi</div>
+            <div class="info-row-val">Free WiFi zones at selected locations across the site. Don't rely on it — signal is congested with 80k people.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-header" onclick="toggleInfo(this)">
+        <div class="info-block-icon">🛍</div>
+        <div class="info-block-title">Click & collect shop</div>
+        <div class="info-block-chev">▼</div>
+      </div>
+      <div class="info-block-body">
+        <div class="info-row">
+          <div class="info-row-icon">🖥</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Pre-order before you arrive</div>
+            <div class="info-row-val">Awakenings has an online Click & Collect shop — order drinks, food, camping gear, merch, and experiences (massages, wellness) in advance. Pick up at the designated Click & Collect point on site. Skips queues and guarantees stock. Worth checking before you go.</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-icon">🏪</div>
+          <div class="info-row-content">
+            <div class="info-row-label">Camp store</div>
+            <div class="info-row-val">On-site camp store sells food, drinks, camping necessities, and hygiene products. Camping gear can also be rented (chairs, tables) at the Camping Recycle & Repair store.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-eyebrow">Who's bringing this?</div>
+    <div class="modal-item" id="modal-item-name"></div>
+    <div class="modal-q">Tap your name to assign it.</div>
+    <div class="modal-persons">
+      <button class="person-btn pb-gio" onclick="assignItem('giovanni')"><div class="crew-dot dot-gio"></div>Giovanni</button>
+      <button class="person-btn pb-lucie" onclick="assignItem('lucie')"><div class="crew-dot dot-lucie"></div>Lucie</button>
+      <button class="person-btn pb-audrey" onclick="assignItem('audrey')"><div class="crew-dot dot-audrey"></div>Audrey</button>
+    </div>
+    <button class="modal-cancel" onclick="closeModal()">Cancel — keep unchecked</button>
+  </div>
+</div>
+
+<footer>Awakenings Festival 2026 &nbsp;·&nbsp; Hilvarenbeek, Netherlands &nbsp;·&nbsp; 10–12 July</footer>
+
+<script>
+const PERSONS = [
+  {id:'giovanni', label:'Giovanni', tagClass:'tag-gio'},
+  {id:'lucie',    label:'Lucie',    tagClass:'tag-lucie'},
+  {id:'audrey',   label:'Audrey',   tagClass:'tag-audrey'},
+];
+
+const PACK = [
+  {id:'shelter', label:'Shelter & sleep', items:[
+    {l:'Tent (rented)',s:true},
+    {l:'Sleeping bag',s:true,n:'Nights drop to ~12°C in July'},
+    {l:'Sleeping mat / inflatable pad',s:true},
+    {l:'Pillow or inflatable pillow'},
+    {l:'Tent footprint / groundsheet'},
+    {l:'Tent pegs + mallet',n:'Often not included with rental'},
+    {l:'Tent repair kit + duct tape'},
+    {l:'Small padlock',n:'For tent zippers'},
+    {l:'Chair (have it)',s:true},
+    {l:'Tarp or canopy',n:'Rain/shade cover over sitting area'},
+  ]},
+  {id:'clothing', label:'Clothing & footwear', items:[
+    {l:'Festival shoes',s:true,n:'Broken-in, closed-toe, mud-proof'},
+    {l:'Backup pair of shoes',s:true},
+    {l:'Rain jacket / poncho',s:true,n:'Non-negotiable in the Netherlands'},
+    {l:'Warm hoodie / fleece',s:true,n:'Nights get cold fast'},
+    {l:'T-shirts (3–4)'},
+    {l:'Underwear (4+)'},
+    {l:'Socks (5 pairs)'},
+    {l:'Shorts + long trousers'},
+    {l:'Sunglasses'},
+    {l:'Hat / cap'},
+  ]},
+  {id:'power', label:'Power & electronics', items:[
+    {l:'Powerbank 10k #1',s:true},
+    {l:'Powerbank 10k #2',s:true},
+    {l:'Powerbank 5k',s:true},
+    {l:'USB-C + Lightning cables',s:true},
+    {l:'Multi-port USB charger',s:true,n:'Charge all banks overnight'},
+    {l:'Headlamp + spare batteries',s:true,n:'Navigate camp at night'},
+    {l:'Waterproof phone case / dry bag',s:true},
+    {l:'EU power adapter',n:'NL uses type C/F'},
+    {l:'Small Bluetooth speaker',n:'Camp vibes'},
+  ]},
+  {id:'health', label:'Health & safety', items:[
+    {l:'High-fidelity earplugs (each)',s:true,n:'Loop or Eargasm — protect your hearing'},
+    {l:'Ibuprofen + paracetamol',s:true},
+    {l:'Blister plasters',s:true},
+    {l:'First aid kit (basic)'},
+    {l:'Sunscreen SPF 50+',s:true},
+    {l:'Electrolyte sachets or tablets',s:true,n:'Critical — 3 days dancing in heat'},
+    {l:'Hand sanitizer',s:true},
+    {l:'Toilet paper + wet wipes',s:true,n:'Always carry on you'},
+    {l:'Antihistamines',n:'Outdoor grass and pollen'},
+    {l:'Muscle relief spray',n:'For day 2–3 legs'},
+    {l:'Melatonin',n:'Helps sleep after adrenaline'},
+    {l:'Prescription medication',s:true},
+  ]},
+  {id:'food', label:'Food & water', items:[
+    {l:'Reusable water bottle',s:true,n:'Free water stations on site'},
+    {l:'Camp snacks',n:'Energy bars, nuts, crackers'},
+    {l:'Easy meals',n:'Instant noodles, etc.'},
+    {l:'Coffee / tea + cup',n:'Morning survival kit'},
+    {l:'Camping cutlery / spork'},
+    {l:'Sealed dry food bag'},
+  ]},
+  {id:'docs', label:'Money & documents', items:[
+    {l:'Passport / ID (each)',s:true,n:'18+ event — required at entry'},
+    {l:'Festival ticket (each)',s:true},
+    {l:'Cash in euros',s:true,n:'€50–100 per person minimum'},
+    {l:'Bank card + backup card',s:true},
+    {l:'EHIC / GHIC health card',s:true},
+    {l:'Emergency contact card (written)',n:'Not just in your phone'},
+    {l:'Travel insurance docs'},
+  ]},
+  {id:'camp', label:'Camp tools & comfort', items:[
+    {l:'Small daypack / backpack',s:true,n:'Carry into the festival daily'},
+    {l:'Festival flag / tent marker',s:true,n:'Find your tent among 80k people'},
+    {l:'Rope / bungee cords'},
+    {l:'Bin bags / trash bags',n:'Pack out your mess'},
+    {l:'Zip-lock bags (various sizes)',n:'Waterproof everything'},
+    {l:'Gaffer tape',n:'Fixes everything'},
+    {l:'Marker pen',n:'Label your gear'},
+    {l:'Foam earplugs for sleep',n:'Different from music earplugs'},
+  ]},
+  {id:'toiletries', label:'Toiletries', items:[
+    {l:'Toothbrush + toothpaste (each)'},
+    {l:'Biodegradable shower gel + shampoo'},
+    {l:'Deodorant',s:true},
+    {l:'Dry shampoo',n:'Shower queues will be long'},
+    {l:'Face wipes'},
+    {l:'Microfibre towel (each)'},
+    {l:'SPF lip balm'},
+  ]},
+];
+
+
+
+// STATE
+let packState = {};
+let modalPending = null;
+let currentFilter = 'all';
+
+try { packState = JSON.parse(localStorage.getItem('awk26_pack') || '{}'); } catch(e){}
+
+// EXPENSES STATE
+let expenses = [];
+let selectedPayer = null;
+let selectedSplit = 'all3';
+try { expenses = JSON.parse(localStorage.getItem('awk26_exp') || '[]'); } catch(e){}
+
+// GPS STATE
+let campGPS = null;
+let campNotes = '';
+try {
+  const _storedGPS = JSON.parse(localStorage.getItem('awk26_gps') || 'null');
+  if (_storedGPS) campGPS = _storedGPS;
+  campNotes = localStorage.getItem('awk26_notes') || '';
+} catch(e){}
+
+// NAV
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// COUNTDOWN
+const FEST = new Date('2026-07-10T15:00:00+02:00');
+function tick() {
+  const diff = FEST - Date.now();
+  if (diff <= 0) {
+    ['days','hours','mins','secs'].forEach(id => document.getElementById('cd-' + id).textContent = '00');
+    return;
+  }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+setInterval(tick, 1000);
+tick();
+
+// PACKING
+function buildPackList() {
+  const c = document.getElementById('pack-list');
+  c.innerHTML = '';
+  PACK.forEach(cat => {
+    const checkedCount = cat.items.filter((_,i) => packState[cat.id+'_'+i]).length;
+    const div = document.createElement('div');
+    div.className = 'pack-cat';
+    const itemsHtml = cat.items.map((item, i) => {
+      const key = cat.id+'_'+i;
+      const owner = packState[key] || '';
+      const checked = !!owner;
+      const person = PERSONS.find(p => p.id === owner);
+      const visible = currentFilter === 'all' || owner === currentFilter || !owner;
+      return `<div class="pack-item${checked?' checked':''}${!visible?' hidden':''}" id="pi_${key}" data-owner="${owner}" onclick="clickItem('${key}','${item.l.replace(/'/g,"\\'")}')">
+        <div class="pack-cb">${checked?'✓':''}</div>
+        <div class="pack-lbl">${item.l}${item.n?`<span class="pack-note">${item.n}</span>`:''}</div>
+        ${item.s?'<span class="pack-star">★</span>':''}
+        ${person?`<span class="owner-tag ${person.tagClass}">${person.label}</span>`:''}
+      </div>`;
+    }).join('');
+    div.innerHTML = `<div class="cat-hdr" onclick="toggleCat('${cat.id}',this)">
+      <span class="cat-lbl">${cat.label}</span>
+      <span class="cat-cnt">${checkedCount}/${cat.items.length}</span>
+      <span class="cat-chev">▼</span>
+    </div>
+    <div class="pack-items" id="ci_${cat.id}">${itemsHtml}</div>`;
+    c.appendChild(div);
+  });
+  updateProgress();
+}
+
+function toggleCat(id, hdr) {
+  const el = document.getElementById('ci_' + id);
+  const col = el.style.display === 'none';
+  el.style.display = col ? '' : 'none';
+  hdr.classList.toggle('collapsed', !col);
+}
+
+function clickItem(key, label) {
+  const el = document.getElementById('pi_' + key);
+  if (el && el.classList.contains('checked')) {
+    packState[key] = null;
+    savePackState();
+    buildPackList();
+    return;
+  }
+  modalPending = {key, label};
+  document.getElementById('modal-item-name').textContent = label;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function assignItem(person) {
+  if (!modalPending) return;
+  packState[modalPending.key] = person;
+  savePackState();
+  closeModal();
+  buildPackList();
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  modalPending = null;
+}
+
+document.getElementById('modal-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function filterPerson(person, btn) {
+  currentFilter = person;
+  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  buildPackList();
+}
+
+function updateProgress() {
+  const total = PACK.reduce((s,c) => s+c.items.length, 0);
+  const done = Object.values(packState).filter(v=>v).length;
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('pack-pct').textContent = pct + '%';
+  document.getElementById('pack-bar').style.width = pct + '%';
+}
+
+function resetPacking() {
+  if (!confirm('Reset all packing assignments?')) return;
+  packState = {};
+  savePackState();
+  buildPackList();
+}
+
+function savePackState() {
+  try { localStorage.setItem('awk26_pack', JSON.stringify(packState)); } catch(e){}
+}
+
+
+// INFO TOGGLES
+function toggleInfo(hdr) {
+  const body = hdr.nextElementSibling;
+  const collapsed = body.style.display === 'none';
+  body.style.display = collapsed ? '' : 'none';
+  hdr.classList.toggle('collapsed', !collapsed);
+}
+
+// INIT
+buildPackList();
+buildExpenses();
+initGPS();
+
+// ── EXPENSES ──
+function selectPayer(pid) {
+  selectedPayer = pid;
+  document.querySelectorAll('.exp-person-sel').forEach(el => el.classList.remove('active'));
+  document.getElementById('psel-' + pid).classList.add('active');
+}
+
+function selectSplit(s) {
+  selectedSplit = s;
+  document.querySelectorAll('.split-opt').forEach(el => el.classList.remove('active'));
+  document.getElementById('split-' + s).classList.add('active');
+}
+
+function addExpense() {
+  const desc = document.getElementById('exp-desc').value.trim();
+  const amt = parseFloat(document.getElementById('exp-amt').value);
+  if (!desc) { document.getElementById('exp-desc').focus(); return; }
+  if (!amt || amt <= 0) { document.getElementById('exp-amt').focus(); return; }
+  if (!selectedPayer) { alert('Select who paid'); return; }
+  expenses.push({ id: Date.now(), desc, amt, payer: selectedPayer, split: selectedSplit });
+  saveExpenses();
+  document.getElementById('exp-desc').value = '';
+  document.getElementById('exp-amt').value = '';
+  buildExpenses();
+}
+
+function deleteExpense(id) {
+  expenses = expenses.filter(e => e.id !== id);
+  saveExpenses();
+  buildExpenses();
+}
+
+function saveExpenses() {
+  try { localStorage.setItem('awk26_exp', JSON.stringify(expenses)); } catch(e){}
+}
+
+function getSplitPeople(split) {
+  const all = ['giovanni','lucie','audrey'];
+  if (split === 'all3') return all;
+  if (split === 'gio-lucie') return ['giovanni','lucie'];
+  if (split === 'gio-audrey') return ['giovanni','audrey'];
+  if (split === 'lucie-audrey') return ['lucie','audrey'];
+  return null; // solo
+}
+
+function buildExpenses() {
+  // Tally paid and owed
+  const paid = {giovanni:0, lucie:0, audrey:0};
+  const owed = {giovanni:0, lucie:0, audrey:0};
+
+  expenses.forEach(e => {
+    paid[e.payer] = (paid[e.payer]||0) + e.amt;
+    const people = getSplitPeople(e.split);
+    if (people) {
+      const share = e.amt / people.length;
+      people.forEach(p => { owed[p] = (owed[p]||0) + share; });
+    } else {
+      owed[e.payer] = (owed[e.payer]||0) + e.amt;
+    }
+  });
+
+  const bal = {
+    giovanni: paid.giovanni - owed.giovanni,
+    lucie: paid.lucie - owed.lucie,
+    audrey: paid.audrey - owed.audrey,
+  };
+
+  // Update summary cards
+  const colors = {giovanni:'var(--yellow)', lucie:'var(--green)', audrey:'var(--blue)'};
+  ['giovanni','lucie','audrey'].forEach(p => {
+    document.getElementById('exp-total-' + p).textContent = '€' + paid[p].toFixed(2);
+    const b = bal[p];
+    const el = document.getElementById('exp-bal-' + p);
+    if (Math.abs(b) < 0.01) {
+      el.textContent = 'even'; el.className = 'exp-person-balance bal-zero';
+    } else if (b > 0) {
+      el.textContent = '+€' + b.toFixed(2); el.className = 'exp-person-balance bal-pos';
+    } else {
+      el.textContent = '−€' + Math.abs(b).toFixed(2); el.className = 'exp-person-balance bal-neg';
+    }
+  });
+
+  // Log list
+  const logEl = document.getElementById('exp-log-list');
+  if (expenses.length === 0) {
+    logEl.innerHTML = '<div class="exp-empty">No expenses logged yet</div>';
+  } else {
+    const names = {giovanni:'Giovanni', lucie:'Lucie', audrey:'Audrey'};
+    const splitLabel = {all3:'split 3 ways','gio-lucie':'Gio+Lucie','gio-audrey':'Gio+Audrey','lucie-audrey':'Lucie+Audrey',solo:'payer only'};
+    const dotColor = {giovanni:'var(--yellow)', lucie:'var(--green)', audrey:'var(--blue)'};
+    logEl.innerHTML = [...expenses].reverse().map(e => `
+      <div class="exp-entry">
+        <div style="width:8px;height:8px;border-radius:50%;background:${dotColor[e.payer]};flex-shrink:0"></div>
+        <div style="flex:1">
+          <div class="exp-entry-desc">${e.desc}</div>
+          <div class="exp-entry-meta">${names[e.payer]} paid · ${splitLabel[e.split]||e.split}</div>
+        </div>
+        <div class="exp-entry-amt" style="color:${dotColor[e.payer]}">€${e.amt.toFixed(2)}</div>
+        <button class="exp-del" onclick="deleteExpense(${e.id})" title="Delete">×</button>
+      </div>
+    `).join('');
+  }
+
+  // Settle up
+  const settleEl = document.getElementById('settle-block');
+  const settleList = document.getElementById('settle-list');
+  if (expenses.length === 0) { settleEl.style.display = 'none'; return; }
+  settleEl.style.display = 'block';
+
+  // Debt minimization
+  const balArr = Object.entries(bal).map(([p,b]) => ({p, b}));
+  const creditors = balArr.filter(x => x.b > 0.01).sort((a,b) => b.b - a.b);
+  const debtors = balArr.filter(x => x.b < -0.01).sort((a,b) => a.b - b.b);
+  const transfers = [];
+  const c = creditors.map(x => ({...x}));
+  const d = debtors.map(x => ({...x}));
+  let ci = 0, di = 0;
+  while (ci < c.length && di < d.length) {
+    const amount = Math.min(c[ci].b, -d[di].b);
+    if (amount > 0.01) transfers.push({from: d[di].p, to: c[ci].p, amt: amount});
+    c[ci].b -= amount; d[di].b += amount;
+    if (c[ci].b < 0.01) ci++;
+    if (d[di].b > -0.01) di++;
+  }
+  const names = {giovanni:'Giovanni', lucie:'Lucie', audrey:'Audrey'};
+  if (transfers.length === 0) {
+    settleList.innerHTML = '<div class="settle-row">Everyone is even ✓</div>';
+  } else {
+    settleList.innerHTML = transfers.map(t =>
+      `<div class="settle-row">${names[t.from]} → ${names[t.to]} <span class="settle-amt">€${t.amt.toFixed(2)}</span></div>`
+    ).join('');
+  }
+}
+
+// ── CAMP GPS ──
+function initGPS() {
+  if (campGPS) renderGPS();
+  const notesEl = document.getElementById('gps-notes');
+  if (notesEl) notesEl.value = campNotes;
+}
+
+function getGPS() {
+  const btn = document.querySelector('.gps-btn-primary');
+  btn.textContent = 'Locating...';
+  btn.style.opacity = '0.6';
+  if (!navigator.geolocation) {
+    btn.textContent = '📍 Save my current location';
+    btn.style.opacity = '1';
+    alert('Geolocation not available on this browser. Enter coordinates manually.');
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      campGPS = { lat: pos.coords.latitude, lng: pos.coords.longitude, acc: Math.round(pos.coords.accuracy) };
+      try { localStorage.setItem('awk26_gps', JSON.stringify(campGPS)); } catch(e){}
+      renderGPS();
+      btn.textContent = '📍 Update location';
+      btn.style.opacity = '1';
+    },
+    err => {
+      btn.textContent = '📍 Save my current location';
+      btn.style.opacity = '1';
+      alert('Could not get location. Check browser permissions or enter manually.');
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+}
+
+function saveManualGPS() {
+  const lat = parseFloat(document.getElementById('gps-lat-input').value);
+  const lng = parseFloat(document.getElementById('gps-lng-input').value);
+  if (isNaN(lat) || isNaN(lng)) { alert('Enter valid coordinates'); return; }
+  campGPS = { lat, lng, acc: null };
+  try { localStorage.setItem('awk26_gps', JSON.stringify(campGPS)); } catch(e){}
+  renderGPS();
+  document.getElementById('gps-manual-form').style.display = 'none';
+}
+
+function renderGPS() {
+  if (!campGPS) return;
+  const lat = campGPS.lat.toFixed(6);
+  const lng = campGPS.lng.toFixed(6);
+
+  document.getElementById('gps-lat-display').textContent = lat;
+  document.getElementById('gps-lat-display').className = 'gps-coord-val';
+  document.getElementById('gps-lng-display').textContent = lng;
+  document.getElementById('gps-lng-display').className = 'gps-coord-val';
+
+  const statusEl = document.getElementById('gps-status');
+  statusEl.className = 'gps-status set';
+  const dotEl = document.getElementById('gps-dot');
+  dotEl.className = 'gps-dot set';
+  const acc = campGPS.acc ? ` · ±${campGPS.acc}m` : '';
+  document.getElementById('gps-status-text').textContent = 'Camp pinned' + acc;
+
+  document.getElementById('gps-clear-btn').style.display = '';
+  document.getElementById('gps-map-links').style.display = '';
+
+  const gLink = document.getElementById('gps-google-link');
+  gLink.href = `https://maps.google.com/?q=${campGPS.lat},${campGPS.lng}`;
+
+  const aLink = document.getElementById('gps-apple-link');
+  aLink.href = `https://maps.apple.com/?q=${campGPS.lat},${campGPS.lng}`;
+}
+
+function clearGPS() {
+  if (!confirm('Clear the camp pin?')) return;
+  campGPS = null;
+  try { localStorage.removeItem('awk26_gps'); } catch(e){}
+  document.getElementById('gps-lat-display').textContent = '—';
+  document.getElementById('gps-lat-display').className = 'gps-coord-val unset';
+  document.getElementById('gps-lng-display').textContent = '—';
+  document.getElementById('gps-lng-display').className = 'gps-coord-val unset';
+  const statusEl = document.getElementById('gps-status');
+  statusEl.className = 'gps-status unset';
+  document.getElementById('gps-dot').className = 'gps-dot unset';
+  document.getElementById('gps-status-text').textContent = 'No pin saved yet';
+  document.getElementById('gps-clear-btn').style.display = 'none';
+  document.getElementById('gps-map-links').style.display = 'none';
+}
+
+function toggleManual() {
+  const el = document.getElementById('gps-manual-form');
+  el.style.display = el.style.display === 'none' ? '' : 'none';
+}
+
+function saveCampNotes() {
+  const val = document.getElementById('gps-notes').value;
+  try { localStorage.setItem('awk26_notes', val); } catch(e){}
+}
+</script>
+</body>
+</html>
